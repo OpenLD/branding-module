@@ -1,4 +1,4 @@
-AC_INIT([enigma2-oe-alliance-plugins],[1.0])
+AC_INIT([enigma2-oe-openld-plugins],[1.0])
 AM_INIT_AUTOMAKE([dist-bzip2 foreign no-define tar-pax])
 AC_CONFIG_HEADERS([enigma2-plugins-config.h])
 
@@ -29,14 +29,14 @@ AC_SUBST(BOXTYPE)
 AC_DEFINE_UNQUOTED(BOXTYPE,"$BOXTYPE",[box type])
 
 AC_ARG_WITH(oever,
-	[  --with-oever=NAME oe name [[OE-A1,OE-A2,...]]],
-	[OE_VER="$withval"],[OE_VER="OE-Alliance 2.0"])
+	[  --with-oever=NAME oe name [[OE-LD1,OE-LD2,...]]],
+	[OE_VER="$withval"],[OE_VER="OE-OpenLD 2.0"])
 AC_SUBST(OE_VER)
 AC_DEFINE_UNQUOTED(OE_VER,"$OE_VER",[oe name])
 
 AC_ARG_WITH(distro,
-	[  --with-distro=NAME distro name [[openvix,openaaf,...]]],
-	[DISTRO="$withval"],[DISTRO="egami"])
+	[  --with-distro=NAME distro name [[openvix,openld,...]]],
+	[DISTRO="$withval"],[DISTRO="openld"])
 AC_SUBST(DISTRO)
 AC_DEFINE_UNQUOTED(DISTRO,"$DISTRO",[distro name])
 

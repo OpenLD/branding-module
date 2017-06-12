@@ -70,9 +70,9 @@ char* ReadProcEntry(char *filename)
 	return real_boxtype_name;
 }
 
-char *_getBoxType()	// this will try to find the correct BOX MACHINE e.x MACHINE=ventonhdx DISTRO=openvix -> it will return uniboxhd1   for a UniBox HD1
+char *_getBoxType()	// this will try to find the correct BOX MACHINE e.x MACHINE=ventonhdx DISTRO=openld -> it will return uniboxhd1   for a UniBox HD1
 {
-	// this ugly code will be removed after we will switch tottaly to OE-A 2.0
+	// this ugly code will be removed after we will switch tottaly to OE-LD 2.0
 	char *boxtype_name = NULL;
 
 	if(strcmp(BOXTYPE, "xpeedlx") == 0)
@@ -478,13 +478,13 @@ char *_getOEVersion()
 
 char *_getMachineBuild()
 {
-	// this will return BUILD MACHINE e.x MACHINE=mbtwin DISTRO=openvix -> it will return inihdx
+	// this will return BUILD MACHINE e.x MACHINE=mbtwin DISTRO=openld -> it will return inihdx
 	return strdup(MACHINE_BUILD);
 }
 
 char *_getMachineMake()
 {
-	// this will return MAKE MACHINE e.x MACHINE=mbtwin DISTRO=openvix -> it will return mbtwin
+	// this will return MAKE MACHINE e.x MACHINE=mbtwin DISTRO=openld -> it will return mbtwin
 	return strdup(MACHINE_MAKE);
 }
 

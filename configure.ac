@@ -100,6 +100,12 @@ AC_ARG_WITH(imagedevbuild,
 AC_SUBST(IMAGEDEVBUILD)
 AC_DEFINE_UNQUOTED(IMAGEDEVBUILD,"$IMAGEDEVBUILD",[build number])
 
+AC_ARG_WITH(imagecodename,
+	[  --with-imagecodename=NAME build name [[B4S364]]],
+	[IMAGECODENAME="$withval"],[IMAGECODENAME=""])
+AC_SUBST(IMAGECODENAME)
+AC_DEFINE_UNQUOTED(IMAGECODENAME,"$IMAGECODENAME",[build name])
+
 AC_ARG_WITH(feedsurl,
 	[  --with-feedsurl=NAME feeds url  [[628]]],
 	[FEEDSURL="$withval"],[FEEDSURL=""])

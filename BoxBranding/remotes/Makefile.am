@@ -1,11 +1,15 @@
 SUBDIRS =
 
 if AX51
-SUBDIRS += ax2
+SUBDIRS += ax51
 endif
 
 if AXULTRA
 SUBDIRS += ax2
+endif
+
+if BEYONWIZU4
+SUBDIRS += beyonwiz1
 endif
 
 if S7100
@@ -62,6 +66,10 @@ endif
 
 if BROADMEDIA
 SUBDIRS += g300
+endif
+
+if SF5008
+SUBDIRS += sf5008
 endif
 
 if SF4008
@@ -124,7 +132,11 @@ if EVOSLIM
 SUBDIRS += evo8
 endif
 
-if EVOPANDA
+if EVOSLIMSE
+SUBDIRS += evo8
+endif
+
+if EVOSLIMT2C
 SUBDIRS += evo8
 endif
 
@@ -218,6 +230,10 @@ endif
 
 if JEPSSEN
 SUBDIRS += mediabox
+endif
+
+if LUNIX
+SUBDIRS += qviart1
 endif
 
 if EDISION
@@ -356,7 +372,7 @@ if TMNANOSEM2PLUS
 SUBDIRS += tm4
 endif
 
-if TIVIARMIN
+if TIVIAR
 SUBDIRS += tiviar
 endif
 
@@ -444,6 +460,10 @@ if XCORE
 SUBDIRS += xcore1 xcore2 xcore3
 endif
 
+if OSNINO
+SUBDIRS += edision1
+endif
+
 if XP1000
 SUBDIRS += xp1000
 endif
@@ -478,4 +498,8 @@ endif
 
 if VALALINUX
 SUBDIRS += vala
+endif
+
+if VIPER
+SUBDIRS += amiko1 amiko2
 endif

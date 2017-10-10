@@ -228,7 +228,10 @@ AM_CONDITIONAL(ROXXS, test `echo "$BOXTYPE" | cut -b 1-5` == "roxxs")
 AM_CONDITIONAL(MEDIAART, test `echo "$BOXTYPE" | cut -b 1-4` == "mart")
 AM_CONDITIONAL(NANO, test `echo "$BOXTYPE" | cut -b 1-4` == "nano")
 AM_CONDITIONAL(FORCE, test `echo "$BOXTYPE" | cut -b 1-5` == "force")
+AM_CONDITIONAL(VIPER, test `echo "$BOXTYPE" | cut -b 1-5` == "viper")
 AM_CONDITIONAL(WORLDVISION, test `echo "$BOXTYPE" | cut -b 1-11` == "worldvision")
+AM_CONDITIONAL(LUNIX, test `echo "$BOXTYPE" | cut -b 1-5` == "lunix")
+AM_CONDITIONAL(TIVIAR, test `echo "$BOXTYPE" | cut -b 1-6` == "tiviar")
 AM_CONDITIONAL(FUSIONHD, test "$BOXTYPE" == fusionhd)
 AM_CONDITIONAL(FUSIONHDSE, test "$BOXTYPE" == fusionhdse)
 AM_CONDITIONAL(REVO4K, test "$BOXTYPE" == revo4k)
@@ -236,6 +239,7 @@ AM_CONDITIONAL(GALAXY4K, test "$BOXTYPE" == galaxy4k)
 AM_CONDITIONAL(AX51, test "$BOXTYPE" == ax51)
 AM_CONDITIONAL(AXULTRA, test "$BOXTYPE" == axultra)
 AM_CONDITIONAL(BCM7251S, test "$BOXTYPE" == bcm7251s)
+AM_CONDITIONAL(BEYONWIZU4, test "$BOXTYPE" == beyonwizu4)
 AM_CONDITIONAL(S7000, test `echo "$MACHINE_BUILD"` == "7000s")
 AM_CONDITIONAL(S7100, test `echo "$MACHINE_BUILD"` == "7100s")
 AM_CONDITIONAL(S7105, test `echo "$MACHINE_BUILD"` == "7105s")
@@ -280,7 +284,8 @@ AM_CONDITIONAL(ENFINITY, test "$BOXTYPE" == enfinity)
 AM_CONDITIONAL(EVOMINI, test "$BOXTYPE" == evomini)
 AM_CONDITIONAL(EVOMINIPLUS, test "$BOXTYPE" == evominiplus)
 AM_CONDITIONAL(EVOSLIM, test "$BOXTYPE" == evoslim)
-AM_CONDITIONAL(EVOPANDA, test "$BOXTYPE" == evopanda)
+AM_CONDITIONAL(EVOSLIMSE, test "$BOXTYPE" == evoslimse)
+AM_CONDITIONAL(EVOSLIMT2C, test "$BOXTYPE" == evoslimt2c)
 AM_CONDITIONAL(X1PLUS, test "$BOXTYPE" == x1plus)
 AM_CONDITIONAL(X2PLUS, test "$BOXTYPE" == x2plus)
 AM_CONDITIONAL(XCOMBO, test "$BOXTYPE" == xcombo)
@@ -288,7 +293,6 @@ AM_CONDITIONAL(BRE2ZE, test "$BOXTYPE" == bre2ze)
 AM_CONDITIONAL(BRE2ZET2C, test "$BOXTYPE" == bre2zet2c)
 AM_CONDITIONAL(BRE2ZE4K, test "$BOXTYPE" == bre2ze4k)
 AM_CONDITIONAL(TRIPLEX, test "$BOXTYPE" == triplex)
-AM_CONDITIONAL(TIVIARMIN, test "$BOXTYPE" == tiviarmin)
 AM_CONDITIONAL(FORMULER1, test "$BOXTYPE" == formuler1)
 AM_CONDITIONAL(FORMULER3, test "$BOXTYPE" == formuler3)
 AM_CONDITIONAL(GBIPBOX, test "$BOXTYPE" == gbipbox)
@@ -332,6 +336,7 @@ AM_CONDITIONAL(ODINM7, test "$MACHINE_BUILD" == odinm7)
 AM_CONDITIONAL(ODINM9, test "$MACHINE_BUILD" == odinm9)
 AM_CONDITIONAL(OPTIMUSSOS1, test "$BOXTYPE" == optimussos1)
 AM_CONDITIONAL(OPTIMUSSOS2, test "$BOXTYPE" == optimussos2)
+AM_CONDITIONAL(OSNINO, test "$BOXTYPE" == osnino)
 AM_CONDITIONAL(PROTEK9900LX, test "$BOXTYPE" == 9900lx)
 AM_CONDITIONAL(PUREHD, test "$BOXTYPE" == purehd)
 AM_CONDITIONAL(PUREHDSE, test "$BOXTYPE" == purehdse)
@@ -341,6 +346,7 @@ AM_CONDITIONAL(SF128, test "$BOXTYPE" == sf128)
 AM_CONDITIONAL(SF138, test "$BOXTYPE" == sf138)
 AM_CONDITIONAL(SF3038, test "$BOXTYPE" == sf3038)
 AM_CONDITIONAL(SF4008, test "$BOXTYPE" == sf4008)
+AM_CONDITIONAL(SF5008, test "$BOXTYPE" == sf5008)
 AM_CONDITIONAL(SOGNO8800HD, test "$BOXTYPE" == sogno8800hd)
 AM_CONDITIONAL(T2CABLE, test "$BOXTYPE" == t2cable)
 AM_CONDITIONAL(TMTWINOE, test "$BOXTYPE" == tmtwin)
@@ -384,11 +390,15 @@ Makefile
 BoxBranding/Makefile
 BoxBranding/lib/Makefile
 BoxBranding/remotes/Makefile
+BoxBranding/remotes/amiko1/Makefile
+BoxBranding/remotes/amiko2/Makefile
 BoxBranding/remotes/ax1/Makefile
 BoxBranding/remotes/ax2/Makefile
+BoxBranding/remotes/ax51/Makefile
 BoxBranding/remotes/azboxhd/Makefile
 BoxBranding/remotes/azboxme/Makefile
 BoxBranding/remotes/azboxelite/Makefile
+BoxBranding/remotes/beyonwiz1/Makefile
 BoxBranding/remotes/cube/Makefile
 BoxBranding/remotes/dmm0/Makefile
 BoxBranding/remotes/dmm1/Makefile
@@ -397,6 +407,7 @@ BoxBranding/remotes/e3hd/Makefile
 BoxBranding/remotes/e4hd/Makefile
 BoxBranding/remotes/e4hdcombo/Makefile
 BoxBranding/remotes/ebox5000/Makefile
+BoxBranding/remotes/edision1/Makefile
 BoxBranding/remotes/evo1/Makefile
 BoxBranding/remotes/evo2/Makefile
 BoxBranding/remotes/evo3/Makefile
@@ -453,11 +464,13 @@ BoxBranding/remotes/relook/Makefile
 BoxBranding/remotes/revo/Makefile
 BoxBranding/remotes/protek1/Makefile
 BoxBranding/remotes/protek2/Makefile
+BoxBranding/remotes/qviart1/Makefile
 BoxBranding/remotes/sab1/Makefile
 BoxBranding/remotes/sf98/Makefile
 BoxBranding/remotes/sf108/Makefile
 BoxBranding/remotes/sf2x8/Makefile
 BoxBranding/remotes/sf3038/Makefile
+BoxBranding/remotes/sf5008/Makefile
 BoxBranding/remotes/sogno/Makefile
 BoxBranding/remotes/triplex/Makefile
 BoxBranding/remotes/tiviar/Makefile

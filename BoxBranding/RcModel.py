@@ -23,7 +23,30 @@ class RcModel:
 		fp.close()
 		return out.split()[0]
 
-	def getRcFolder(self):
+	def process(self, line):
+		if line.lower().startswith('config.usage.rc_model='):
+			parts = line.split('=')
+			folder = parts[-1].rstrip()
+			if os.path.isfile('/usr/share/enigma2/rc_models/'+ folder + '/rc.png') and os.path.isfile('/usr/share/enigma2/rc_models/'+ folder + '/rcpositions.xml') and os.path.isfile('/usr/share/enigma2/rc_models/'+ folder + '/remote.html'):
+				return folder
+		return None
+
+	# Don't try to be clever and use E2 functions here ...
+	def readE2Settings(self):
+		if os.path.isfile('/etc/enigma2/settings'):
+			with open('/etc/enigma2/settings') as config:
+				for line in config:
+					ret = self.process(line)
+					if ret is not None:
+						return ret
+		return None
+
+	def getRcFolder(self, GetDefault=False):
+		if not GetDefault:
+			ret = self.readE2Settings()
+			if ret is not None:
+				return ret
+
 		remotefolder = 'dmm0'
 		if os.path.exists('/proc/stb/info/azmodel'):
 			f = open("/proc/stb/info/model",'r')
@@ -36,6 +59,10 @@ class RcModel:
 			elif model == "me" or model == "minime":
 				remotefolder = 'azboxme'
 
+		elif boxtype in ('vipert2c','vipercombo'):
+			remotefolder = 'amiko2'
+		elif boxtype in ('vipercombohdd'):
+			remotefolder = 'amiko1'
 		elif boxtype in ('enfinity'):
 			remotefolder = 'evo1'
 		elif boxtype in ('alphatriple'):
@@ -44,6 +71,8 @@ class RcModel:
 			remotefolder = 'sf108'
 		elif boxtype in ('sf3038','sf128','sf138','sf4008'):
 			remotefolder = 'sf3038'
+		elif boxtype in ('sf5008'):
+			remotefolder = 'sf5008'
 		elif boxtype in ('sf98'):
 			remotefolder = 'sf98'
 		elif boxtype in ('x2plus'):
@@ -60,7 +89,7 @@ class RcModel:
 			remotefolder = 'evo7'
 		elif boxtype in ('bre2ze','bre2ze4k','bre2zet2c'):
 			remotefolder = 'wwio1'
-		elif boxtype in ('tiviarmin'):
+		elif boxtype in ('tiviarmin','tiviaraplus'):
 			remotefolder = 'tiviar'
 		elif boxtype in ('twinboxlcd'):
 			remotefolder = 'red1'
@@ -71,10 +100,10 @@ class RcModel:
 		elif boxtype in ('odin2hybrid', 'odinplus'):
 			remotefolder = 'ax1'
 		elif boxtype in ('ax51','axultra'):
-			remotefolder = 'ax2'
+			remotefolder = 'ax51'
 		elif boxtype in ('e4hd', 'e4hdhybrid'):
 			remotefolder = 'e4hd'
-		elif boxtype in ('e4hdcombo'):
+		elif boxtype in ('e4hdcombo','e4hdultra'):
 			remotefolder = 'e4hdcombo'
 		elif boxtype in ('enibox'):
 			remotefolder = 'hdbox'
@@ -92,7 +121,7 @@ class RcModel:
 			remotefolder = 'zgemma1'
 		elif boxtype in ('zgemmash2', 'zgemmass', 'zgemmaslc'):
 			remotefolder = 'zgemma2'
-		elif boxtype in ('zgemmahs', 'zgemmah2s', 'zgemmah2h','zgemmah5','zgemmah52s','zgemmah3ac','zgemmah5ac','zgemmah52tc','zgemmah32tc','zgemmah7','zgemmah7s','zgemmah7c','zgemmah52splus', 'zgemmah2splus'):
+		elif boxtype in ('zgemmah6','zgemmah4','zgemmahs', 'zgemmah2s', 'zgemmah2h','zgemmah5','zgemmah52s','zgemmah3ac','zgemmah5ac','zgemmah52tc','zgemmah32tc','zgemmah7','zgemmah7s','zgemmah7c','zgemmah52splus', 'zgemmah2splus'):
 			remotefolder = 'zgemma3'
 		elif boxtype in ('zgemmai55'):
 			remotefolder = 'zgemma5'
@@ -120,6 +149,8 @@ class RcModel:
 			remotefolder = 'iqon2'
 		elif boxtype in ('force3uhdplus','force3uhd'):
 			remotefolder = 'iqon3'
+		elif boxtype in ('lunix34k','lunix'):
+			remotefolder = 'qviart1'
 		elif boxtype in ('formuler1', 'formuler3', 'formuler4', 'formuler4turbo', 'formuler1tc', 'formuler3ip', 'formuler4ip'):
 			remotefolder = 'formuler1'
 		elif boxtype in ('triplex', 'ultrabox'):
@@ -128,7 +159,7 @@ class RcModel:
 			remotefolder = 'dmm0'
 		elif boxtype in ('dm800', 'dm800se', 'dm500hd'):
 			remotefolder = 'dmm1'
-		elif boxtype in ('dm7080', 'dm7020hd', 'dm7020hdv2', 'dm800sev2', 'dm500hdv2', 'dm820', 'dm520', 'dm525', 'dm900'):
+		elif boxtype in ('dm7080', 'dm7020hd', 'dm7020hdv2', 'dm800sev2', 'dm500hdv2', 'dm820', 'dm520', 'dm525', 'dm900', 'dm920'):
 			remotefolder = 'dmm2'
 		elif boxtype in ('tmtwin', 'tm2t'):
 			remotefolder = 'tm1'
@@ -167,6 +198,8 @@ class RcModel:
 			remotefolder = 'ini5'
 		elif boxtype in ('beyonwizt2', 'beyonwizt4'):
 			remotefolder = 'ini7'
+		elif boxtype in ('beyonwizu4'):
+			remotefolder = 'beyonwiz1'
 		elif machinebrand in ('SPACE', 'FEGASUS') or boxtype in ('xpeedlxpro'):
 			remotefolder = 'ini6'
 		elif boxtype in ('opticumtt'):
@@ -215,6 +248,8 @@ class RcModel:
 			remotefolder = 'xcore1'
 		elif boxtype in ('osmini', 'osminiplus', 'osmega'):
 			remotefolder = 'xcore3'
+		elif boxtype in ('osnino'):
+			remotefolder = 'edision1'
 		elif machinebuild == 'cube':
 			remotefolder = 'cube'
 		elif machinebuild.startswith('ebox'):
@@ -229,7 +264,7 @@ class RcModel:
 			remotefolder = 'xp1000'
 		elif brandoem == 'fulan':
 			remotefolder = 'fulan'
-		elif boxtype in ('evoslim','evopanda'):
+		elif boxtype in ('evoslim','evoslimse','evoslimt2c'):
 			remotefolder = 'evo8'
 		elif boxtype in ('wetekplay'):
 			remotefolder = 'wetek'

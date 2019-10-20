@@ -452,6 +452,14 @@ if VUUNO4K
 SUBDIRS += vu
 endif
 
+if VUUNO4KSE
+SUBDIRS += vu4
+endif
+
+if VUZERO4K
+SUBDIRS += vu4
+endif
+
 if VUULTIMO4K
 SUBDIRS += vu
 endif
